@@ -59,6 +59,6 @@ def do():
 ############################## // server name paste
 # run(host="localhost", port=80, debug=True, reloader=True, server="paste")
 if config.IS_PRODUCTION is False: 
-  run(host="127.0.0.1", port=80, debug=True, reloader=True, server="paste")
+  run(host="127.0.0.1", port=5555, debug=True, reloader=True, server="paste")
 else: 
   application = default_app()
