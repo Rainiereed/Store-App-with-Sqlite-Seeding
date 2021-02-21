@@ -41,7 +41,7 @@ db.executescript(q)
 # Get path to pictures and store the paths in a list
 category = "furniture"
 total_images = 500
-response = requests.get(f"https://api.unsplash.com/search/photos?per_page={total_images}&query={category}&client_id=IsxzWEj9MnEVqZC2aEcJEXuzMFArCs17RVRNY4P1Is0")
+response = requests.get(f"https://api.unsplash.com/search/photos?per_page={total_images}&query={category}&client_id=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 
 response = response.json()
 results = response["results"]
