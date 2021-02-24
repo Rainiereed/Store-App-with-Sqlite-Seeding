@@ -4,21 +4,23 @@ import config
 import uuid
 import os
 
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
 ##############################
 @get("/app.css")
 def do():
-  return static_file("app.css", root="css")
+  return static_file("app.css", root=f"{dir_path}/css")
 
 ##############################
 @get("/logo.png")
 def do():
-  return static_file("logo.png", root="images")
+  return static_file("logo.png", root=f"{dir_path}/images")
 
 ##############################
 @get("/")
 @view("index")
 def do():
-  db = sqlite3.connect("data/database.db")
+  db = sqlite3.connect(f"{dir_path}/data/database.db")
   items = db.execute("SELECT * FROM items ORDER BY RANDOM() LIMIT 20").fetchall()
   db.close()
   return dict(items=items)
@@ -27,7 +29,7 @@ def do():
 @get("/items/<item_id>")
 @view("item")
 def do(item_id):
-  db = sqlite3.connect("./data/database.db")
+  db = sqlite3.connect(f"{dir_path}/data/database.db")
   item = db.execute("SELECT * FROM items WHERE item_id = ?", (item_id,) ).fetchone()
   print(item)
   db.close()
